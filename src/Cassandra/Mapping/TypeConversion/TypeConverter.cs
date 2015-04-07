@@ -203,17 +203,17 @@ namespace Cassandra.Mapping.TypeConversion
         // (these methods are invoked via reflection above)
         private static Dictionary<TKey, TValue> ConvertToDictionary<TKey, TValue>(IDictionary<TKey, TValue> mapFromDatabase)
         {
-            return new Dictionary<TKey, TValue>(mapFromDatabase);
+            return new Dictionary<TKey, TValue>(mapFromDatabase ?? new Dictionary<TKey, TValue>());
         }
 
         private static HashSet<T> ConvertToHashSet<T>(IEnumerable<T> setFromDatabase)
         {
-            return new HashSet<T>(setFromDatabase);
+            return new HashSet<T>(setFromDatabase ?? Enumerable.Empty<T>());
         }
 
         private static SortedSet<T> ConvertToSortedSet<T>(IEnumerable<T> setFromDatabase)
         {
-            return new SortedSet<T>(setFromDatabase);
+            return new SortedSet<T>(setFromDatabase ?? Enumerable.Empty<T>());
         }
         // ReSharper restore UnusedMember.Local
         
